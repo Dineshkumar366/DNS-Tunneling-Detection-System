@@ -1,0 +1,5 @@
+timestamp,source_ip,destination_ip,dns_query,query_type,subdomain,length,entropy,frequency,risk_score,status
+2026-09-14 14:00:01,192.168.1.10,192.168.1.1,www.example.com,A,www,3,1.585,1,0,NORMAL_OR_LOW_RISK
+2026-09-14 14:01:02,192.168.1.10,192.168.1.1,a8x92kq7m2p1.example.com,A,a8x92kq7m2p1,12,3.585,10,40,NORMAL_OR_LOW_RISK
+2026-09-14 14:02:03,192.168.1.10,192.168.1.1,x9k7m2p8q4s6d1.example.com,A,x9k7m2p8q4s6d1,14,3.807,10,40,NORMAL_OR_LOW_RISK
+2026-09-14 14:03:04,192.168.1.10,192.168.1.1,p7x2m9k4d8s6w1z3.example.com,AAAA,p7x2m9k4d8s6w1z3,16,3.875,10,90,POSSIBLE_SUSPICIOUS_DNS

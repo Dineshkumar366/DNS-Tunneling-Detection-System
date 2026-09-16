@@ -1,0 +1,24 @@
+# Main search
+index=dns_security sourcetype=dns_security_live
+
+# Total suspicious DNS events
+index=dns_security sourcetype=dns_security_live
+| stats count as "Suspicious DNS Events"
+
+# Risk score over time
+index=dns_security sourcetype=dns_security_live
+| timechart avg(risk_score) as "Average Risk Score"
+
+# Top suspicious queries
+index=dns_security sourcetype=dns_security_live
+| stats count as "Detection Count" by dns_query
+| sort -"Detection Count"
+| head 10
+
+# DNS events by source IP
+index=dns_security sourcetype=dns_security_live
+| stats count as "DNS Events" by source_ip
+| sort -"DNS Events"
+
+# High-risk events
+index=dns_security sourcetype=dns_security_live risk_score>=80

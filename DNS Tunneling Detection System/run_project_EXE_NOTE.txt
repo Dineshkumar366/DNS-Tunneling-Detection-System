@@ -1,0 +1,1 @@
+A native Windows run_project.exe was not generated in this environment. Use run_project.bat, or build the launcher with: pyinstaller --onefile --name run_project scripts\launcher.py

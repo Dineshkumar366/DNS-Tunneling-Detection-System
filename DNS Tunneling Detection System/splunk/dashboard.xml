@@ -1,0 +1,61 @@
+<form version="1.1" theme="light">
+  <label>DNS Security Monitoring Dashboard</label>
+  <description>Possible suspicious DNS behaviour monitoring</description>
+  <fieldset submitButton="false">
+    <input type="time" token="time">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Total Suspicious DNS Events</title>
+      <single>
+        <search>
+          <query>index=dns_security sourcetype=dns_security_live | stats count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Risk Score Over Time</title>
+      <chart>
+        <search>
+          <query>index=dns_security sourcetype=dns_security_live | timechart avg(risk_score) as "Average Risk Score"</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Top Suspicious DNS Queries</title>
+      <table>
+        <search>
+          <query>index=dns_security sourcetype=dns_security_live | stats count as "Detection Count" by dns_query | sort -"Detection Count" | head 10</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>DNS Events by Source IP</title>
+      <chart>
+        <search>
+          <query>index=dns_security sourcetype=dns_security_live | stats count as "DNS Events" by source_ip | sort -"DNS Events"</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.chart">column</option>
+      </chart>
+    </panel>
+  </row>
+</form>

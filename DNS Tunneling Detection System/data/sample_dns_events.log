@@ -1,0 +1,1 @@
+timestamp=2026-09-14 14:03:04 source_ip=192.168.1.10 destination_ip=192.168.1.1 dns_query=p7x2m9k4d8s6w1z3.example.com query_type=AAAA subdomain=p7x2m9k4d8s6w1z3 length=16 entropy=3.875 frequency=10 risk_score=90 status=POSSIBLE_SUSPICIOUS_DNS
